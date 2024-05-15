@@ -1,0 +1,16 @@
+remote_host = "xcphost1"
+remote_username = "root"
+#remote_password = "password"
+sr_iso_name = "nfs_iso"
+iso = "http://mywebserver/iso/WINSERVER2022SERVER_EVAL_x64FRE_en-us.iso"
+
+template_name = "Packer Template Windows Server 2022"
+template_description = "Packer Template Windows Server 2022"
+template_cpu = "2"
+template_ram = "2048" #MB
+template_disk = "20480" #MB
+template_networks = ["eth0"]
+template_tags = ["Windows","Packer"]
+sr_name = "templateStorageSR"
+winrm_username = "administrator"
+winrm_password = "S3cret!"

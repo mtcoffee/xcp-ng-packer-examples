@@ -1,0 +1,48 @@
+#cloud-config
+autoinstall:
+  version: 1
+  locale: en_US
+  keyboard:
+    layout: us
+  storage:
+    layout:
+      name: lvm
+  packages:
+    - openssh-server
+    - cloud-init
+    - cloud-initramfs-growroot
+    - whois
+    - zsh
+    - wget
+    - tasksel
+    - vim
+    - git
+    - build-essential
+    - netcat-openbsd
+    - wget
+    - curl
+    - python3
+  ssh:
+    install-server: yes
+    allow-pw: true
+  user-data:
+    package_upgrade: true
+    users:
+      - name: elsudo
+        passwd: "$6$SE7r5Ecfi1IwTGdm$/TyIQTZdtrydcQLY1TbMccpwRZlteOJ0TshTgErZP7U8Mw5Ko4wlGu0UEdAlhiV.HgbdsNLszwodR92Ycs4QL1"
+        groups: [adm, cdrom, dip, plugdev, lxd, sudo]
+        lock-passwd: false
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+    write_files:
+      - path: /etc/apt/sources.list.d/xen-guest-agent.list
+        permissions: root
+        owner: root
+        content: |
+          deb [trusted=yes] https://gitlab.com/api/v4/projects/xen-project%252Fxen-guest-agent/packages/generic/deb-amd64/ release/
+    runcmd:
+      - |
+        apt update
+        apt install xen-guest-agent -y
+  late-commands:
+    - apt remove intel-microcode -y

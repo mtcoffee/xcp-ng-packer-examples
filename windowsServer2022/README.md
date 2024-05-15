@@ -1,0 +1,1 @@
+This packer build will load cloudbase-init so that it can be deployed with a cloudinit user-data file in either the XCP-ng UI or via Terraform
