@@ -130,7 +130,7 @@ source "xenserver-iso" "win2022" {
   }
 
 
-  # Change this to match the ISO of ubuntu you are using in the iso_url variable
+  # template variables
   clone_template = "Windows Server 2022 (64-bit)"
   firmware       = "bios" #autounattend.xml floppy_files not working in uefi
   vm_name        = var.template_name
