@@ -63,7 +63,7 @@ Remove-Item C:\$msiFileName -Confirm:$false
 
 
 #install xen tools from citrix
-$toolsmsiLocation = 'https://downloads.xenserver.com/vm-tools-windows/9.3.2'
+$toolsmsiLocation = 'https://downloads.xenserver.com/vm-tools-windows/9.3.3'
 $toolsmsiFileName = 'managementagentx64.msi'
 Invoke-WebRequest -Uri ($toolsmsiLocation + '/' + $toolsmsiFileName) -OutFile C:\$toolsmsiFileName
 Start-Process msiexec.exe -ArgumentList "/i C:\$toolsmsiFileName /quiet /forcerestart" -Wait
